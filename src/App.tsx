@@ -4,6 +4,8 @@ import { FormEvent, useEffect, useMemo, useState } from 'react'
 import { parseRecipe } from './lib/recipeParser'
 import { Recipe } from './types'
 import { RecipeInput } from './components/Input'
+import { Header } from './components/Header'
+import { CurrencyContextProvider } from './contexts/CurrencyContext'
 
 function App() {
   const [recipeDoc, setRecipeDoc] = useState<Document | PDFDocumentProxy | undefined>()
@@ -24,9 +26,12 @@ function App() {
 
   return (
     <div>
-      <RecipeInput setDocument={setRecipeDoc}/>
+      <CurrencyContextProvider>
+        <Header />
+        <RecipeInput setDocument={setRecipeDoc} />
 
-      {JSON.stringify(recipe)}
+        {JSON.stringify(recipe)}
+      </CurrencyContextProvider>
     </div>)
 }
 

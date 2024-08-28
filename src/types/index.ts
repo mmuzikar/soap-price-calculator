@@ -4,3 +4,14 @@ export * from './recipe'
 export * from './measurements'
 
 export type RecipeInputDocument = Document | PDFDocumentProxy
+
+
+export type Currency = {
+    name: string;
+    symbol_native: string;
+    symbol: string;
+    code: string;
+    name_plural: string;
+    rounding: number;
+    decimal_digits: number;
+}

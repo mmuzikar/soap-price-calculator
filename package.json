@@ -12,6 +12,8 @@
   "dependencies": {
     "@rewind-ui/core": "^0.20.0",
     "@uidotdev/usehooks": "^2.4.1",
+    "currency-list": "^1.0.8",
+    "dependency-list": "^0.2.2",
     "pdfjs-dist": "^4.5.136",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
