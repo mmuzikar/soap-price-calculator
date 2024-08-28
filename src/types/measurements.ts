@@ -1,0 +1,1 @@
+export type WeightType = 'pounds' | 'ounces' | 'grams'

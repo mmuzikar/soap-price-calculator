@@ -1,5 +1,6 @@
 module.exports = {
     content: [
+      './index.html',
       './src/**/*.{html,jsx,tsx}',
       './node_modules/@rewind-ui/core/dist/theme/styles/*.js',
     ],

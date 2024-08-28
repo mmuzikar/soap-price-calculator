@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Input } from '@rewind-ui/core'
+import { getDocument, PDFDocumentProxy } from 'pdfjs-dist'
+import { FormEvent, useEffect, useMemo, useState } from 'react'
+import { parseRecipe } from './lib/recipeParser'
+import { Recipe } from './types'
+import { RecipeInput } from './components/Input'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [recipeDoc, setRecipeDoc] = useState<Document | PDFDocumentProxy | undefined>()
+
+  const [recipe, setRecipe] = useState<undefined | Recipe>(undefined)
+
+  useEffect(() => {
+    async function parse() {
+      if (recipeDoc) {
+        setRecipe(await parseRecipe(recipeDoc))
+      } else {
+        setRecipe(undefined)
+      }
+    }
+
+    parse()
+  }, [recipeDoc])
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <RecipeInput setDocument={setRecipeDoc}/>
+
+      {JSON.stringify(recipe)}
+    </div>)
 }
 
 export default App

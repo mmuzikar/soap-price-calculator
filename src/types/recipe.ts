@@ -1,0 +1,12 @@
+export interface Oil {
+    grams: number,
+    name: string
+}
+
+export interface Recipe {
+    name?: string,
+    waterAmount: number,
+    lyeAmount: number,
+    fragranceAmount: number,
+    oils: Oil[]
+}
