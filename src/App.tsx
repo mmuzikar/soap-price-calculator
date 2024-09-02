@@ -6,6 +6,7 @@ import { Recipe } from './types'
 import { RecipeInput } from './components/Input'
 import { Header } from './components/Header'
 import { CurrencyContextProvider } from './contexts/CurrencyContext'
+import { UnitsContextProvider } from './contexts/UnitsContext'
 
 function App() {
   const [recipeDoc, setRecipeDoc] = useState<Document | PDFDocumentProxy | undefined>()
@@ -27,10 +28,12 @@ function App() {
   return (
     <div>
       <CurrencyContextProvider>
-        <Header />
-        <RecipeInput setDocument={setRecipeDoc} />
+        <UnitsContextProvider>
+          <Header />
+          <RecipeInput setDocument={setRecipeDoc} />
 
-        {JSON.stringify(recipe)}
+          {JSON.stringify(recipe)}
+        </UnitsContextProvider>
       </CurrencyContextProvider>
     </div>)
 }

@@ -1,9 +1,10 @@
-import { Button, Dropdown, Input } from "@rewind-ui/core"
+import { Button, Dropdown, Input, Select } from "@rewind-ui/core"
 import { useCurrencyContext } from "../contexts/CurrencyContext"
-import { useUnits } from "../contexts/UnitsContext"
+import { Units, useUnits } from "../contexts/UnitsContext"
 import { SearchableDropdown } from "./SearchableDropdown"
 import { useMemo, useState } from "react"
 import { Currency } from "../types"
+import { capitalize } from "../utils"
 
 function CurrencyDisplay(c: Currency) {
     return <>{c.name} ({c.symbol})</>
@@ -43,20 +44,21 @@ function CurrencyDropDown() {
 }
 
 function UnitsDropDown() {
-
     const units = useUnits()
 
-
-    return <Dropdown>
-
-    </Dropdown>
+    return <Select onChange={e => units.setUnits(e.target.value as Units)} defaultValue={'grams'}>
+        {units.getAllUnits().map(unit => <option value={unit}>{capitalize(unit)}</option>)}
+    </Select>
 
 }
 
 export function Header() {
 
     return <div className="flex flex-row">
+        
+
         <CurrencyDropDown />
+        <UnitsDropDown />
     </div>
 
 }
