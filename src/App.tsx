@@ -1,12 +1,12 @@
-import { Input } from '@rewind-ui/core'
-import { getDocument, PDFDocumentProxy } from 'pdfjs-dist'
-import { FormEvent, useEffect, useMemo, useState } from 'react'
+import { PDFDocumentProxy } from 'pdfjs-dist'
+import { useEffect, useState } from 'react'
 import { parseRecipe } from './lib/recipeParser'
 import { Recipe } from './types'
 import { RecipeInput } from './components/Input'
 import { Header } from './components/Header'
 import { CurrencyContextProvider } from './contexts/CurrencyContext'
 import { UnitsContextProvider } from './contexts/UnitsContext'
+import { BodySection } from './components/page/BodySection'
 
 function App() {
   const [recipeDoc, setRecipeDoc] = useState<Document | PDFDocumentProxy | undefined>()
@@ -32,7 +32,7 @@ function App() {
           <Header />
           <RecipeInput setDocument={setRecipeDoc} />
 
-          {JSON.stringify(recipe)}
+          {recipe && <BodySection {...recipe}/>}
         </UnitsContextProvider>
       </CurrencyContextProvider>
     </div>)
