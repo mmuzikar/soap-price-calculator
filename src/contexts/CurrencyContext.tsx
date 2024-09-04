@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useContext, useMemo, useState } from "react";
 import CurrencyList from 'currency-list'
 import { Currency } from "../types";
+import { getCountryCurrency } from "../lib/geolocator";
 
 interface CurrencyContextData {
     getAllCurrencies : () => Currency[]
@@ -17,7 +18,7 @@ export function useCurrencyContext() {
 }
 
 export function CurrencyContextProvider({children}: {children: ReactNode}) {
-    const [currency, _setCurrency] = useState<Currency>(CurrencyList.get('USD'))
+    const [currency, _setCurrency] = useState<Currency>(CurrencyList.get(getCountryCurrency() || "USD"))
     const allCurrencies = useMemo(() => Object.values(CurrencyList.getAll('en_US')), [])
 
     const {Provider} = CurrencyContext

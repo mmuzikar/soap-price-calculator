@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useMemo, useState } from "react";
+import { getCountryUnit } from "../lib/geolocator";
 
 const ALL_UNITS = ['pounds', 'ounces', 'grams'] as const
 type UnitTuple = typeof ALL_UNITS
@@ -19,7 +20,7 @@ export function useUnits() {
 }
 
 export function UnitsContextProvider({children}: {children: ReactNode}) {
-    const [units, setUnits] = useState<Units>('grams')
+    const [units, setUnits] = useState<Units>(getCountryUnit())
     const unitsDisplay = useMemo(() => {
         switch(units){
             case "pounds": return 'lbs'
