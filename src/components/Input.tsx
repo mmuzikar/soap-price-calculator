@@ -47,8 +47,11 @@ export function RecipeInput({ setDocument }: Props) {
         }
     }
 
-    return <div onDrop={onDrop} className="border-4 border-dashed rounded-lg w-1/2">
-        <Text>You can import any recipe from <a href="http://www.soapcalc.net/calc/SoapCalcWP.asp">SoapCalc</a> and the recipe will get loaded for you.</Text>
+    return <div onDrop={onDrop} className="p-4 border-4 border-dashed rounded-lg w-1/2 flex justify-center flex-col">
+        <h1 className="py-3 font-bold text-xl">SoapRecipe price calculator</h1>
+        
+        <Text className="py-2" size="lg">You can import any recipe from <a href="http://www.soapcalc.net/calc/SoapCalcWP.asp">SoapCalc</a> and the recipe will get loaded for you.</Text>
+        <Text size="base">You can use either pdf or html.</Text>
         <Input type='file' accept=".pdf,.html" onInput={onFileInput}></Input>
 
     </div>

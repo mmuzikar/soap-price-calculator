@@ -48,7 +48,8 @@ class HTMLParser implements RecipeParser<Document> {
             oils,
             waterAmount,
             lyeAmount,
-            fragranceAmount
+            fragranceAmount,
+            additionalIngredients: []
         }
     }
 
@@ -142,7 +143,8 @@ class PDFParser implements RecipeParser<PDFDocumentProxy> {
             oils,
             fragranceAmount: Number(fragranceRow.pop()),
             lyeAmount: Number(lyeRow.pop()),
-            waterAmount: Number(waterRow.pop())
+            waterAmount: Number(waterRow.pop()),
+            additionalIngredients: []
         }
     }
 

@@ -7,8 +7,6 @@ export function useLocalStorage<T>(key: string | undefined, initialValue: T) {
     }
     const [state, setState] = useState<T>(initialValue)
 
-
-
     useEffect(() => {
         if (key) {
             window.localStorage.setItem(key, String(state))
