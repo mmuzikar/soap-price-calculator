@@ -37,7 +37,7 @@ export function RecipeInput({ setDocument }: Props) {
 
 
     function onFileInput(e: FormEvent<HTMLInputElement>) {
-        setFile(e.target.files[0])
+        setFile(e.currentTarget.files?.[0])
     }
 
     function onDrop(e : React.DragEvent<HTMLDivElement>) {

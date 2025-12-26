@@ -1,12 +1,10 @@
 import { Badge, Input } from "@rewind-ui/core"
 import { useCurrencyContext } from "../contexts/CurrencyContext"
 import { useRecipe } from "../contexts/RecipeContext"
-import { useUnits } from "../contexts/UnitsContext"
 import { useState } from "react"
 
 export function PriceCalculations() {
     const { ingredients } = useRecipe()
-    const { unitsDisplay } = useUnits()
     const { getCurrency } = useCurrencyContext()
 
     const [soaps, setSoaps] = useState<number>(1)

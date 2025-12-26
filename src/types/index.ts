@@ -2,9 +2,9 @@ import { PDFDocumentProxy } from 'pdfjs-dist'
 
 export * from './recipe'
 export * from './measurements'
+export * from './country'
 
 export type RecipeInputDocument = Document | PDFDocumentProxy
-
 
 export type Currency = {
     name: string;

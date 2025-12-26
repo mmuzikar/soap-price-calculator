@@ -1,11 +1,13 @@
 
 import { getCountryForTimezone } from 'countries-and-timezones';
 import countryData from '../data/countryList.json'
+import { Country } from '../types';
 
-export function getCountry() {
+export function getCountry() : Country | undefined {
     const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     if (!userTimezone) return;
     const country = getCountryForTimezone(userTimezone)
+    if (!country) return;
     return country && countryData[country.id]
 }
 

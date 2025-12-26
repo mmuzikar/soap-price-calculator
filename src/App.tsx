@@ -1,7 +1,6 @@
 import { PDFDocumentProxy } from 'pdfjs-dist'
 import { ReactNode, useEffect, useState } from 'react'
 import { parseRecipe } from './lib/recipeParser'
-import { Recipe } from './types'
 import { RecipeInput } from './components/Input'
 import { Header } from './components/Header'
 import { CurrencyContextProvider } from './contexts/CurrencyContext'

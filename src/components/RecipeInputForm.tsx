@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Dropdown, Input, Modal, Select, useToast } from "@rewind-ui/core";
+import { Badge, Button, Card, Input, Modal, Select } from "@rewind-ui/core";
 import { useUnits } from "../contexts/UnitsContext";
 import React, { useEffect, useMemo, useState } from "react";
 import { useCurrencyContext } from "../contexts/CurrencyContext";
@@ -50,7 +50,7 @@ function NumberPerUnitItem({ name, grams, setPrice: setTotalPrice, customIngredi
             <span>/</span>
             <Input type="number" className="w-1/4" value={amount} onChange={e => setAmount(parseFloat(e.target.value))}></Input>
             <span>{units.unitsDisplay}</span>
-            <span>=</span><Badge color="blue" className="justify-self-end">{pricePerAmount} {getCurrency().symbol} / {units.unitsDisplay}</Badge>
+            <span>=</span><Badge color="blue" className="justify-self-end">{pricePerAmount.toFixed(3)} {getCurrency().symbol} / {units.unitsDisplay}</Badge>
         </Card.Body>
     </Card>
 }
