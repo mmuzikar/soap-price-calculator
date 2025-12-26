@@ -1,5 +1,5 @@
 
-import { writeFileSync } from 'fs'
+import { writeFileSync, existsSync, mkdirSync } from 'fs'
 import countryData from '../country_data/countries.json'
 
 type CountryInfo = {
@@ -18,5 +18,7 @@ for (const country of countryData) {
         flag: country['flag']
     }
 }
-
+if (!existsSync('./src/data')) {
+    mkdirSync('./src/data')
+}
 writeFileSync('./src/data/countryList.json', JSON.stringify(data))
